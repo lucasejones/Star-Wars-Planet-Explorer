@@ -11,6 +11,14 @@ Each of the 10 planets is visited exactly once before you can visit it again, in
 
 This “whirlwind tour” ensures as dynamic a viewing experience as possible. It’s "controlled randomization”; each given planet visit is randomized, but within boundaries that eliminate duplicate visits and optimizes for new experiences, even with limited use.
 
+## To-Dos:
+1. Currently, the navigation links aren't tied to any functionality. 
+  - Make a component that allows navigation to a specific planet that essentially is a horizontal list of navigable planet names above the planet box.
+  - lift state up into this new component that will contain the PlanetsList and PlanetBox components. This new component will contain a lot of the logic currently in Planetbox, because PlanetsList also needs access to this.
+2. check out animation method alternatives
+3. assign some slight and themed bg color swap depending on planet
+4. fix all the unstructured css names
+
 
 # Getting Started with Create React App
 
