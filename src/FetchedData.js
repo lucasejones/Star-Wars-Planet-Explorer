@@ -31,7 +31,7 @@ export default function FetchedData({ currentPlanet }) {
 			<li className='fetched-item' key={i}>{i}</li>
 		)
 	})
-
+	console.log('test')
 
 	return(
 		<div className='fetched'>
