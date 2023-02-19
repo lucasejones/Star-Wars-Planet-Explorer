@@ -1,45 +1,50 @@
 export default function FetchedData({ currentPlanet }) {
 
-	function getKeysAndValues(planetObject) {
-		var keys = []
-		var values = []
-		Object.keys(planetObject).slice(0, -5).map((key, index) => {
-			keys.push(key);
-			values.push(planetObject[key])
-		})
-
-		for (let i = 0; i < keys.length; i++) {
-			keys[i] = keys[i].replace(/_/g, ' ');
+	function cleanData(dirtyData) {
+		for (let i = 0; i < dirtyData.length; i++) {
+			dirtyData[i][0] = dirtyData[i][0].replace(/_/g, ' ');
 		}
-		return [keys, values]
+		return dirtyData
 	}
-	
-	
-	const keysArr = getKeysAndValues(currentPlanet)[0]
-	const valuesArr = getKeysAndValues(currentPlanet)[1]
 
-	let keys = []
-	keysArr.map(i => {
-		keys.push(
-			<li className='fetched-item' key={i}>{i}:</li>
-		)
-	})
 
-	let values = []
-	valuesArr.map(i => {
-		values.push(
-			<li className='fetched-item' key={i}>{i}</li>
-		)
-	})
+	function createArrays(data) {
+		const keysArr = []
+		const valuesArr = []
+
+		data.map(item => {
+			keysArr.push(item[0]+':')
+			valuesArr.push(item[1])
+		})
+		return [keysArr, valuesArr]
+	}
+
+	
+	function createElements(dataArr) {
+		let elementsArr = []
+		dataArr.map(i => {
+			elementsArr.push(
+				<li className='fetched-item' key={i}>{i}</li>
+			)
+		})
+		return elementsArr
+	}
+
+
+	const usefulData = Object.entries(currentPlanet).slice(0, -5);
+	const cleanedData = cleanData(usefulData);
+
+	const keysArr = createArrays(cleanedData)[0];
+	const valuesArr = createArrays(cleanedData)[1];
 
 
 	return(
 		<div className='fetched'>
 			<div className='fetched-keys'>
-				{keys}
+				{createElements(keysArr)}
 			</div>
 			<div className='fetched-values'>
-				{values}
+				{createElements(valuesArr)}
 			</div>
 		</div>
 	)
