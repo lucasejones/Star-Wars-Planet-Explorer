@@ -55,7 +55,6 @@ export default function App() {
 							<h3 className='prompt'>Click above to begin</h3>
 						}
 
-
 						{showWelcome && 
 							<WelcomeBox onCloseWelcome={closeWelcome} />
 						}

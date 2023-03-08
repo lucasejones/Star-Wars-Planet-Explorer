@@ -2,7 +2,7 @@ export default function PlanetsList({ data }) {
 
 	function handleClick(e) {
 		e.preventDefault()
-		// TODO: trigger the data of the selected planet to be shown inside the PlanetBox omponent
+		// TODO: trigger the data of the selected planet to be shown inside the PlanetBox component
 	}
 
 	const items = []

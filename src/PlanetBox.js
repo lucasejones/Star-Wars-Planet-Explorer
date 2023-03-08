@@ -8,6 +8,7 @@ export default function PlanetBox({ data }) {
 	const imageRef = useRef();
 	const arrFill = Array.from(Array(data.length - 1)).map((e, i) => i + 1)
 	const indexArrRef = useRef(arrFill)
+	
 
 	useEffect(() => {
 		console.log('PlanetBox render')
