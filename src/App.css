@@ -85,9 +85,17 @@
   margin-top: 0;
 }
 
+
+
+
+/*-----------------*/
+/*---Welcome Box---*/
+/*-----------------*/
+
 .welcome-box {
   position: relative;
   max-width: 800px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,12 +154,11 @@
 
 
 
-
 /*----------------*/
 /*--Main Content--*/
 /*----------------*/
 
-.content-container {
+.planets-content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,6 +167,7 @@
 /*  overflow: auto;*/
 /*  overflow: hidden;*/
 }
+
 
 /*.nav {
   display: flex;

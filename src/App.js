@@ -1,7 +1,6 @@
 import './App.css';
 import Header from './Header.js'
-import PlanetBox from './PlanetBox.js';
-import PlanetsList from './PlanetsList.js'
+import PlanetsData from './PlanetsData.js'
 import WelcomeBox from './WelcomeBox.js'
 import { useState, useEffect} from 'react';
 
@@ -45,7 +44,6 @@ export default function App() {
 				onEnterApp={enterApp}
 				isClickable={!showWelcome}
 			/>
-			<div className='content-container'>
 				{
 					!data ? 
 						<div className='loading'>loading...</div> 
@@ -59,16 +57,11 @@ export default function App() {
 							<WelcomeBox onCloseWelcome={closeWelcome} />
 						}
 
-						{showList && 
-							<PlanetsList data={data} />
-						}
-
-						{showPlanet &&
-							<PlanetBox data={data} />
+						{showList && showPlanet && 
+							<PlanetsData data={data} />
 						}
 					</>
 				}	
-			</div>
 		</div>
 	);
 }
