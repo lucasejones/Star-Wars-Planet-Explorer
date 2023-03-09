@@ -10,6 +10,10 @@ export default function PlanetsData({ data }) {
 		setPlanet(newPlanet)
 	}
 
+	if (planet.name === 'Yavin IV') {
+		planet.name = 'Yavin-IV' 
+	} 
+
 	return(
 		<div className='planets-content-container'>
 			<PlanetsList 

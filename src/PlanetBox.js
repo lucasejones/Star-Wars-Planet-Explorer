@@ -47,7 +47,7 @@ export default function PlanetBox({ data, planet, onChange, useRandom, onFlipRan
      
 
 	function handleClick() {
-		if (indexArrRef.current.length == 0) {
+		if (indexArrRef.current.length === 0) {
 			indexArrRef.current = Array.from(Array(10).keys())
 		}
 
@@ -63,9 +63,6 @@ export default function PlanetBox({ data, planet, onChange, useRandom, onFlipRan
 
 	const allImages = imageImport(require.context('./images/', false))
 
-	if (planet.name === 'Yavin IV') {
-		planet.name = 'Yavin-IV' 
-	} 
 
 	return(
 		<div className='planet-box'
