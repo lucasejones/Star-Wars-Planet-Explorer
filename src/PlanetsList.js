@@ -1,29 +1,33 @@
-export default function PlanetsList({ data }) {
+import PlanetBox from './PlanetBox.js';
 
-	function handleClick(e) {
+export default function PlanetsList({ data, planet, onChange, onFlipRandom }) {
+	
+	function handleClick(e, name) {
 		e.preventDefault()
-		// TODO: trigger the data of the selected planet to be shown inside the PlanetBox omponent
+		onFlipRandom()
+		onChange(name)
 	}
 
 	const items = []
-	data.map((i) => {
-		if (i.name === 'Yavin IV') {
-			i.name = 'Yavin-IV'
+	data.map((item) => {
+		if (item.name === 'Yavin IV') {
+			item.name = 'Yavin-IV'
 		}
 
 		items.push(
-			<div className='nav-div' key={i.name}>
+			<div className='nav-div' key={item.name}>
 				<a 
 					href='.planet-box'
-					onClick={handleClick}
+					onClick={(e) => handleClick(e, item)}
 				>
 					<li className='nav-name'>
-						<span className='nav-item'>{i.name.toLowerCase()}</span>
+						<span className={item.name === planet.name ? 'nav-item-current' : 'nav-item'}>{item.name.toLowerCase()}</span>
 					</li>
 				</a>
 			</div>
 		)
 	})
+
 	
 	return(
 		<div className='nav-group'>
@@ -31,3 +35,6 @@ export default function PlanetsList({ data }) {
 		</div>
 	)
 }
+
+
+
