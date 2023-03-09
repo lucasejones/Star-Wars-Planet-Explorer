@@ -17,7 +17,7 @@ export default function PlanetsList({ data, planet, onChange, onFlipRandom }) {
 		items.push(
 			<div className='nav-div' key={item.name}>
 				<a 
-					href='.planet-box'
+					href={'#'+item.name}
 					onClick={(e) => handleClick(e, item)}
 				>
 					<li className='nav-name'>
