@@ -1,30 +1,27 @@
 import PlanetBox from './PlanetBox.js';
-import { useState } from 'react';
 
-export default function PlanetsList({ data }) {
-	const [planet, setPlanet] = useState(data[0])
-	const [useRandom, setUseRandom] = useState(false);
-
+export default function PlanetsList({ data, planet, onChange, onFlipRandom }) {
+	
 	function handleClick(e, name) {
 		e.preventDefault()
-		setUseRandom(false)
-		setPlanet(name)
+		onFlipRandom()
+		onChange(name)
 	}
 
 	const items = []
-	data.map((i) => {
-		if (i.name === 'Yavin IV') {
-			i.name = 'Yavin-IV'
+	data.map((item) => {
+		if (item.name === 'Yavin IV') {
+			item.name = 'Yavin-IV'
 		}
 
 		items.push(
-			<div className='nav-div' key={i.name}>
+			<div className='nav-div' key={item.name}>
 				<a 
 					href='.planet-box'
-					onClick={(e) => handleClick(e, i)}
+					onClick={(e) => handleClick(e, item)}
 				>
 					<li className='nav-name'>
-						<span className={i.name === planet.name ? 'nav-item-current' : 'nav-item'}>{i.name.toLowerCase()}</span>
+						<span className={item.name === planet.name ? 'nav-item-current' : 'nav-item'}>{item.name.toLowerCase()}</span>
 					</li>
 				</a>
 			</div>
@@ -33,16 +30,8 @@ export default function PlanetsList({ data }) {
 
 	
 	return(
-		<div className='planets-content-container'>
-			<div className='nav-group'>
-				{items}
-			</div>
-			<PlanetBox 
-				data={data} 
-				planet={planet} 
-				useRandom={useRandom}
-				onRandom={() => setUseRandom(true)}
-			/>
+		<div className='nav-group'>
+			{items}
 		</div>
 	)
 }

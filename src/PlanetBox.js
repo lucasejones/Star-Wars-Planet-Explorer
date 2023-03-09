@@ -3,7 +3,7 @@ import FetchedData from './FetchedData.js';
 import { useState, useEffect, useRef } from 'react';
 
 
-export default function PlanetBox({ data, planet, onRandom, useRandom }) {
+export default function PlanetBox({ data, planet, onChange, useRandom, onFlipRandom }) {
 	const [index, setIndex] = useState(0);
 	const imageRef = useRef();
 	const arrFill = Array.from(Array(data.length - 1)).map((e, i) => i + 1)
@@ -12,6 +12,11 @@ export default function PlanetBox({ data, planet, onRandom, useRandom }) {
 
 	useEffect(() => {
 		console.log('PlanetBox render')
+
+		const randomPlanet = data[index];
+		if (useRandom) {
+			onChange(randomPlanet);
+		}
 
 		imageRef.current.animate(
 		{
@@ -48,7 +53,7 @@ export default function PlanetBox({ data, planet, onRandom, useRandom }) {
 
 		let newIndex = indexFromProxyArr(indexArrRef.current, index)
 		setIndex(newIndex)
-		onRandom()
+		onFlipRandom()
 
 		imageRef.current.animate(
 			{
@@ -57,12 +62,6 @@ export default function PlanetBox({ data, planet, onRandom, useRandom }) {
 	}
 
 	const allImages = imageImport(require.context('./images/', false))
-
-
-	const randomPlanet = data[index];
-	if (useRandom === true) {
-		planet = randomPlanet;
-	}
 
 	if (planet.name === 'Yavin IV') {
 		planet.name = 'Yavin-IV' 
