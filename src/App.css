@@ -223,12 +223,17 @@
 /*  margin: 0.55rem;*/
 }
 
-.nav-item {
+.nav-item, .nav-item-current {
   background-image: linear-gradient(#f2f3f4 0 0);
   background-position: 0% 100%;
   background-size: 0% 2px;
   background-repeat: no-repeat;
   transition: 0.2s ease;
+}
+
+.nav-item-current {
+  background-size: 100% 2px;
+  text-shadow: 0 0 2px white;
 }
 
 .nav-item:hover {

@@ -1,8 +1,14 @@
-export default function PlanetsList({ data }) {
+import PlanetBox from './PlanetBox.js';
+import { useState } from 'react';
 
-	function handleClick(e) {
+export default function PlanetsList({ data }) {
+	const [planet, setPlanet] = useState(data[0])
+	const [useRandom, setUseRandom] = useState(false);
+
+	function handleClick(e, name) {
 		e.preventDefault()
-		// TODO: trigger the data of the selected planet to be shown inside the PlanetBox component
+		setUseRandom(false)
+		setPlanet(name)
 	}
 
 	const items = []
@@ -15,19 +21,31 @@ export default function PlanetsList({ data }) {
 			<div className='nav-div' key={i.name}>
 				<a 
 					href='.planet-box'
-					onClick={handleClick}
+					onClick={(e) => handleClick(e, i)}
 				>
 					<li className='nav-name'>
-						<span className='nav-item'>{i.name.toLowerCase()}</span>
+						<span className={i.name === planet.name ? 'nav-item-current' : 'nav-item'}>{i.name.toLowerCase()}</span>
 					</li>
 				</a>
 			</div>
 		)
 	})
+
 	
 	return(
-		<div className='nav-group'>
-			{items}
+		<div className='planets-content-container'>
+			<div className='nav-group'>
+				{items}
+			</div>
+			<PlanetBox 
+				data={data} 
+				planet={planet} 
+				useRandom={useRandom}
+				onRandom={() => setUseRandom(true)}
+			/>
 		</div>
 	)
 }
+
+
+

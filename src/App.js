@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './Header.js'
-import PlanetsData from './PlanetsData.js'
+import PlanetsList from './PlanetsList.js';
 import WelcomeBox from './WelcomeBox.js'
 import { useState, useEffect} from 'react';
 
@@ -8,8 +8,8 @@ export default function App() {
 	const [data, setData] = useState(null);
 	const [startScreen, setStartScreen] = useState(true)
 	const [showWelcome, setShowWelcome] = useState(false)
-	const [showList, setShowList] = useState(false)
-	const [showPlanet, setShowPlanet] = useState(false)
+	const [showData, setShowData] = useState(false)
+	// const [showPlanet, setShowPlanet] = useState(false)
 
 	useEffect(() => {
 		console.log('initial render')
@@ -28,8 +28,9 @@ export default function App() {
 	function enterApp() {
 		setStartScreen(false)
 		setShowWelcome(true)
-		setShowList(true)
-		setShowPlanet(true)
+		setShowData(true)
+		// setShowList(true)
+		// setShowPlanet(true)
 	}
 
 
@@ -57,8 +58,8 @@ export default function App() {
 							<WelcomeBox onCloseWelcome={closeWelcome} />
 						}
 
-						{showList && showPlanet && 
-							<PlanetsData data={data} />
+						{showData &&
+							<PlanetsList data={data} />
 						}
 					</>
 				}	
