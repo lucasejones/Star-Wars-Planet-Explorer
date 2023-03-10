@@ -17,6 +17,7 @@ export default function PlanetsList({ data, planet, onChange, onFlipRandom }) {
 				<a 
 					href={'#'+item.name}
 					onClick={(e) => handleClick(e, item)}
+					key={item.name}
 				>
 					<li className='nav-name'>
 						<span className={item.name === planet.name ? 'nav-item-current' : 'nav-item'}>{item.name.toLowerCase()}</span>
